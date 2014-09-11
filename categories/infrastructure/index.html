@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
+
+    <title>Infrastructure &middot; ordered.io</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    
+    
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    
+
+    
+    
+        <link rel="stylesheet" href="/css/blog.css">
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="http://localhost:1313">ordered.io</a></h1>
+            <h2 class="brand-tagline"> Random io about performance engineering in the world of NAND flash. </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a class="pure-button" href="http://twitter.com/rothwerx"><i class="fa fa-twitter"></i> Twitter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="pure-button" href="http://github.com/rothwerx "><i class="fa fa-github-alt"></i> github</a>
+                </li>
+               
+            </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                
+                <h1 class="content-subhead">07 Sep 2014, 01:25</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/post/helloworld" class="post-title">Hello New World</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                <a class="post-category post-category-Infrastructure" href="/categories/infrastructure">Infrastructure</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>A new job means setting up new computers and getting comfortable in your environment. As a seasoned ops guy I&rsquo;ve shied away from getting too comfortable in any given environment, because when you&rsquo;re dealing with a constantly growing production environment less customization is better. Vim is a good example. It sucks to log into a machine, fire up vim, go for your favorite keymapping (like F3 for NERDTree), and realizing it&rsquo;s just not available. Which you do over and over again out of shear force of habit.</p>
+
+<p>You could write your custom environment into a configuration management manifest/recipe/playbook/etc, but the less packages you&rsquo;ve got installed the better. Just ask your security team.</p>
+
+<p>In my new position I&rsquo;ll still have a number of servers to deal with, but they won&rsquo;t be production. I&rsquo;m also switching from a mostly task-based workflow to a project-based workflow.
+I&rsquo;ve always preferred Mac OS for my daily desktop (my first foray into Linux was dual-booting <a href="http://www.fixstars.com/en/technologies/linux/">YellowDog</a> on my <a href="http://www.forevermac.com/1998/05/apple-powerbook-wallstreet-g3250mhz-laptop/">Wallstreet Powerbook</a>). So here&rsquo;s what I set up first on my freshly re-installed Macbook Pro, my essential apps:</p>
+
+<ul>
+<li><a href="http://brew.sh">Homebrew</a>.</li>
+<li>Dropbox (mostly so I could sync my 1Password vault, see below).</li>
+<li><a href="https://agilebits.com/onepassword">1Password</a> (mostly so I had easy access to my github credentials, but 1Password is invaluable to me).</li>
+<li><a href="https://iterm2.com">iTerm2</a> (with the <a href="http://ethanschoonover.com/solarized">Solarized</a> theme).</li>
+<li>The latest vim and Macvim (via homebrew).</li>
+<li>My <a href="https://gist.github.com/rothwerx/d206b61f91526742e5e7">vimrc.</a> I use <a href="https://github.com/junegunn/vim-plug">vim-plug</a>; I highly recommend it. It&rsquo;s probably time to do a documentation and organization exercise on my vimrc though.</li>
+<li><a href="http://golang.org">Golang</a> (via homebrew) I think I&rsquo;ll have more opportunities to use this language.</li>
+<li><a href="http://pip.readthedocs.org/en/latest/">pip</a> (via easy_install), <a href="http://virtualenv.readthedocs.org/en/latest/">virtualenv</a> (via pip), and <a href="http://virtualenvwrapper.readthedocs.org/en/latest/">vitualenvwrapper</a> (via pip).</li>
+<li>Evernote - Extensive notes will be important.</li>
+<li><a href="http://www.alfredapp.com">Alfred,</a> a useful launcher/mouse-free utility.</li>
+<li><a href="http://hugo.spf13.com">Hugo,</a> which I&rsquo;m using to create this site. Built with Go.</li>
+</ul>
+
+<p>I&rsquo;m sure there will be a lot more I&rsquo;ll remember I need as I go along. I might go back to using Wunderlist, for example. I&rsquo;ve already got a workstation with <strong>plenty</strong> of RAM running Microsoft Hyper-V for virtual machines as needed, and I have an ESXi host for testing from an initiator side as well. But the lab side is a subject for a whole other post.</p>
+
+                    </div>
+                </section>
+                
+            </div>
+            <div class="footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+            <li>Powered by <a class="hugo" href="http://hugo.spf13.com/" target="_blank">hugo</a></li>
+        </ul>
+    </div>
+</div>
+
+        </div>
+    </div>
+</div>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>

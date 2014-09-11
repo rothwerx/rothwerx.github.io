@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Os-X on ordered.io </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://ordered.io/tags/os-x/index.xml</link>
+    <language>en-us</language>
+    
+    
+    <updated>Sun, 07 Sep 2014 01:25:10 UTC</updated>
+    
+    <item>
+      <title>Hello New World</title>
+      <link>http://ordered.io/post/helloworld</link>
+      <pubDate>Sun, 07 Sep 2014 01:25:10 UTC</pubDate>
+      
+      <guid>http://ordered.io/post/helloworld</guid>
+      <description>&lt;p&gt;A new job means setting up new computers and getting comfortable in your environment. As a seasoned ops guy I&amp;rsquo;ve shied away from getting too comfortable in any given environment, because when you&amp;rsquo;re dealing with a constantly growing production environment less customization is better. Vim is a good example. It sucks to log into a machine, fire up vim, go for your favorite keymapping (like F3 for NERDTree), and realizing it&amp;rsquo;s just not available. Which you do over and over again out of shear force of habit.&lt;/p&gt;
+
+&lt;p&gt;You could write your custom environment into a configuration management manifest/recipe/playbook/etc, but the less packages you&amp;rsquo;ve got installed the better. Just ask your security team.&lt;/p&gt;
+
+&lt;p&gt;In my new position I&amp;rsquo;ll still have a number of servers to deal with, but they won&amp;rsquo;t be production. I&amp;rsquo;m also switching from a mostly task-based workflow to a project-based workflow.
+I&amp;rsquo;ve always preferred Mac OS for my daily desktop (my first foray into Linux was dual-booting &lt;a href=&#34;http://www.fixstars.com/en/technologies/linux/&#34;&gt;YellowDog&lt;/a&gt; on my &lt;a href=&#34;http://www.forevermac.com/1998/05/apple-powerbook-wallstreet-g3250mhz-laptop/&#34;&gt;Wallstreet Powerbook&lt;/a&gt;). So here&amp;rsquo;s what I set up first on my freshly re-installed Macbook Pro, my essential apps:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://brew.sh&#34;&gt;Homebrew&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Dropbox (mostly so I could sync my 1Password vault, see below).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://agilebits.com/onepassword&#34;&gt;1Password&lt;/a&gt; (mostly so I had easy access to my github credentials, but 1Password is invaluable to me).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://iterm2.com&#34;&gt;iTerm2&lt;/a&gt; (with the &lt;a href=&#34;http://ethanschoonover.com/solarized&#34;&gt;Solarized&lt;/a&gt; theme).&lt;/li&gt;
+&lt;li&gt;The latest vim and Macvim (via homebrew).&lt;/li&gt;
+&lt;li&gt;My &lt;a href=&#34;https://gist.github.com/rothwerx/d206b61f91526742e5e7&#34;&gt;vimrc.&lt;/a&gt; I use &lt;a href=&#34;https://github.com/junegunn/vim-plug&#34;&gt;vim-plug&lt;/a&gt;; I highly recommend it. It&amp;rsquo;s probably time to do a documentation and organization exercise on my vimrc though.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://golang.org&#34;&gt;Golang&lt;/a&gt; (via homebrew) I think I&amp;rsquo;ll have more opportunities to use this language.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pip.readthedocs.org/en/latest/&#34;&gt;pip&lt;/a&gt; (via easy_install), &lt;a href=&#34;http://virtualenv.readthedocs.org/en/latest/&#34;&gt;virtualenv&lt;/a&gt; (via pip), and &lt;a href=&#34;http://virtualenvwrapper.readthedocs.org/en/latest/&#34;&gt;vitualenvwrapper&lt;/a&gt; (via pip).&lt;/li&gt;
+&lt;li&gt;Evernote - Extensive notes will be important.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.alfredapp.com&#34;&gt;Alfred,&lt;/a&gt; a useful launcher/mouse-free utility.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://hugo.spf13.com&#34;&gt;Hugo,&lt;/a&gt; which I&amp;rsquo;m using to create this site. Built with Go.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;m sure there will be a lot more I&amp;rsquo;ll remember I need as I go along. I might go back to using Wunderlist, for example. I&amp;rsquo;ve already got a workstation with &lt;strong&gt;plenty&lt;/strong&gt; of RAM running Microsoft Hyper-V for virtual machines as needed, and I have an ESXi host for testing from an initiator side as well. But the lab side is a subject for a whole other post.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Servers on Fast Flash </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://localhost:1313/categories/servers/index.xml</link>
+    <language>en-us</language>
+    
+    
+    <updated>Wed, 10 Sep 2014 18:36:26 UTC</updated>
+    
+    <item>
+      <title>Matching LSI RAID volumes to Linux volumes</title>
+      <link>http://localhost:1313/post/matching_lsi_and_linux_volumes</link>
+      <pubDate>Wed, 10 Sep 2014 18:36:26 UTC</pubDate>
+      
+      <guid>http://localhost:1313/post/matching_lsi_and_linux_volumes</guid>
+      <description>&lt;p&gt;If you use LSI RAID controllers and have the tw_cli tool installed in Linux, you can correlate the LSI RAID volumes with Linux volumes by matching their serial numbers. So with tw_cli, assuming you&amp;rsquo;re interested in controller 4&amp;rsquo;s unit 1, it&amp;rsquo;s:
+    tw_cli /c4/u1 show serial&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Linux on ordered.io </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://ordered.io/tags/linux/index.xml</link>
+    <language>en-us</language>
+    
+    
+    <updated>Wed, 10 Sep 2014 18:36:26 UTC</updated>
+    
+    <item>
+      <title>Matching LSI RAID volumes to Linux volumes</title>
+      <link>http://ordered.io/post/matching_lsi_and_linux_volumes</link>
+      <pubDate>Wed, 10 Sep 2014 18:36:26 UTC</pubDate>
+      
+      <guid>http://ordered.io/post/matching_lsi_and_linux_volumes</guid>
+      <description>&lt;p&gt;If you use LSI RAID controllers and have the tw_cli tool installed in Linux, you can correlate the LSI RAID volumes with Linux volumes by matching their serial numbers. So with tw_cli, assuming you&amp;rsquo;re interested in the first unit of controller 4:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tw_cli /c4/u0 show serial
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And you&amp;rsquo;d probably run that for all your volumes.&lt;/p&gt;
+
+&lt;p&gt;Then on the Linux side, you can use udevadm:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;udevadm info --query=property --name=sda | grep ID_SCSI_SERIAL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So for the server I&amp;rsquo;m looking at, they&amp;rsquo;re set up in just the order you&amp;rsquo;d expect:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; for i in sda sdb sdc sdd; do /sbin/udevadm info --query=property --name=${i} | grep ID_SCSI_SERIAL; done
+ID_SCSI_SERIAL=9WM4R0ZZ1C5E4800E665
+ID_SCSI_SERIAL=9WM4WANB1C5E480079CB
+ID_SCSI_SERIAL=9WM4Y81G1C5E4D004F8B
+ID_SCSI_SERIAL=9WM4ZHBK1C5E4D0022CB
+
+&amp;gt; for i in 0 1 2 3; do tw_cli /c4/u${i} show serial; done
+/c4/u0 serial number = 9WM4R0ZZ1C5E4800E665
+/c4/u1 serial number = 9WM4WANB1C5E480079CB
+/c4/u2 serial number = 9WM4Y81G1C5E4D004F8B
+/c4/u3 serial number = 9WM4ZHBK1C5E4D0022CB
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>iTerm and dir_colors</title>
+      <link>http://ordered.io/post/iterm_and_dircolors</link>
+      <pubDate>Tue, 09 Sep 2014 19:46:35 UTC</pubDate>
+      
+      <guid>http://ordered.io/post/iterm_and_dircolors</guid>
+      <description>&lt;p&gt;When using iTerm2, if you duplicate the default profile, the reported terminal type (&lt;em&gt;Preferences-&amp;gt;Profiles-&amp;gt;Terminal-&amp;gt;Report Terminal Type&lt;/em&gt;) is set to &lt;code&gt;xterm-256color&lt;/code&gt;. Some distributions, like the CentOS 5 server I just logged into, don&amp;rsquo;t have a condition for the &lt;code&gt;xterm-256color&lt;/code&gt; TERM type in the &lt;code&gt;/etc/profile.d/colorls.sh&lt;/code&gt; script. As a result, you won&amp;rsquo;t get color output from ls. Changing my iTerm profile to &lt;code&gt;xterm-color&lt;/code&gt; gave me colored ls output on my next login without having to putz around with dircolors. Obviously you could change settings on the target server side too, but why?&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

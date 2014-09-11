@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title> on Performant Anxiety </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://localhost:1313/categories/index.xml</link>
+    <language>en-us</language>
+    
+    
+    <updated>Sun, 07 Sep 2014 01:13:54 UTC</updated>
+    
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about</link>
+      <pubDate>Sun, 07 Sep 2014 01:13:54 UTC</pubDate>
+      
+      <guid>http://localhost:1313/about</guid>
+      <description>&lt;p&gt;I have been a system administrator specializing in UNIX systems and networks for over 12 years. For the last 4 years I&amp;rsquo;ve worked at an innovative hardware company that makes enterprise flash products (to be used by system administrators).&lt;/p&gt;
+
+&lt;p&gt;My latest role is that of Performance Engineer, where I&amp;rsquo;ll be diving into the challenges of instrumenting at a system level, observing bottlenecks, and coming up with strategies and best practice for removing those bottlenecks. I&amp;rsquo;ll be working with the supremely smart people dedicated to our All Flash Array (AFA) product, and my aim is to help make our AFA the best in the industry.&lt;/p&gt;
+
+&lt;p&gt;This site serves to document the things I learn along the way.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

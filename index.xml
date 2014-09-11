@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Recent Content on ordered.io </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://ordered.io/index.xml</link>
+    <language>en-us</language>
+    
+    
+    <updated>Wed, 10 Sep 2014 18:36:26 UTC</updated>
+    
+    <item>
+      <title>Matching LSI RAID volumes to Linux volumes</title>
+      <link>http://ordered.io/post/matching_lsi_and_linux_volumes</link>
+      <pubDate>Wed, 10 Sep 2014 18:36:26 UTC</pubDate>
+      
+      <guid>http://ordered.io/post/matching_lsi_and_linux_volumes</guid>
+      <description>&lt;p&gt;If you use LSI RAID controllers and have the tw_cli tool installed in Linux, you can correlate the LSI RAID volumes with Linux volumes by matching their serial numbers. So with tw_cli, assuming you&amp;rsquo;re interested in the first unit of controller 4:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tw_cli /c4/u0 show serial
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And you&amp;rsquo;d probably run that for all your volumes.&lt;/p&gt;
+
+&lt;p&gt;Then on the Linux side, you can use udevadm:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;udevadm info --query=property --name=sda | grep ID_SCSI_SERIAL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So for the server I&amp;rsquo;m looking at, they&amp;rsquo;re set up in just the order you&amp;rsquo;d expect:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt; for i in sda sdb sdc sdd; do /sbin/udevadm info --query=property --name=${i} | grep ID_SCSI_SERIAL; done
+ID_SCSI_SERIAL=9WM4R0ZZ1C5E4800E665
+ID_SCSI_SERIAL=9WM4WANB1C5E480079CB
+ID_SCSI_SERIAL=9WM4Y81G1C5E4D004F8B
+ID_SCSI_SERIAL=9WM4ZHBK1C5E4D0022CB
+
+&amp;gt; for i in 0 1 2 3; do tw_cli /c4/u${i} show serial; done
+/c4/u0 serial number = 9WM4R0ZZ1C5E4800E665
+/c4/u1 serial number = 9WM4WANB1C5E480079CB
+/c4/u2 serial number = 9WM4Y81G1C5E4D004F8B
+/c4/u3 serial number = 9WM4ZHBK1C5E4D0022CB
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>iTerm and dir_colors</title>
+      <link>http://ordered.io/post/iterm_and_dircolors</link>
+      <pubDate>Tue, 09 Sep 2014 19:46:35 UTC</pubDate>
+      
+      <guid>http://ordered.io/post/iterm_and_dircolors</guid>
+      <description>&lt;p&gt;When using iTerm2, if you duplicate the default profile, the reported terminal type (&lt;em&gt;Preferences-&amp;gt;Profiles-&amp;gt;Terminal-&amp;gt;Report Terminal Type&lt;/em&gt;) is set to &lt;code&gt;xterm-256color&lt;/code&gt;. Some distributions, like the CentOS 5 server I just logged into, don&amp;rsquo;t have a condition for the &lt;code&gt;xterm-256color&lt;/code&gt; TERM type in the &lt;code&gt;/etc/profile.d/colorls.sh&lt;/code&gt; script. As a result, you won&amp;rsquo;t get color output from ls. Changing my iTerm profile to &lt;code&gt;xterm-color&lt;/code&gt; gave me colored ls output on my next login without having to putz around with dircolors. Obviously you could change settings on the target server side too, but why?&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hello New World</title>
+      <link>http://ordered.io/post/helloworld</link>
+      <pubDate>Sun, 07 Sep 2014 01:25:10 UTC</pubDate>
+      
+      <guid>http://ordered.io/post/helloworld</guid>
+      <description>&lt;p&gt;A new job means setting up new computers and getting comfortable in your environment. As a seasoned ops guy I&amp;rsquo;ve shied away from getting too comfortable in any given environment, because when you&amp;rsquo;re dealing with a constantly growing production environment less customization is better. Vim is a good example. It sucks to log into a machine, fire up vim, go for your favorite keymapping (like F3 for NERDTree), and realizing it&amp;rsquo;s just not available. Which you do over and over again out of shear force of habit.&lt;/p&gt;
+
+&lt;p&gt;You could write your custom environment into a configuration management manifest/recipe/playbook/etc, but the less packages you&amp;rsquo;ve got installed the better. Just ask your security team.&lt;/p&gt;
+
+&lt;p&gt;In my new position I&amp;rsquo;ll still have a number of servers to deal with, but they won&amp;rsquo;t be production. I&amp;rsquo;m also switching from a mostly task-based workflow to a project-based workflow.
+I&amp;rsquo;ve always preferred Mac OS for my daily desktop (my first foray into Linux was dual-booting &lt;a href=&#34;http://www.fixstars.com/en/technologies/linux/&#34;&gt;YellowDog&lt;/a&gt; on my &lt;a href=&#34;http://www.forevermac.com/1998/05/apple-powerbook-wallstreet-g3250mhz-laptop/&#34;&gt;Wallstreet Powerbook&lt;/a&gt;). So here&amp;rsquo;s what I set up first on my freshly re-installed Macbook Pro, my essential apps:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://brew.sh&#34;&gt;Homebrew&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Dropbox (mostly so I could sync my 1Password vault, see below).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://agilebits.com/onepassword&#34;&gt;1Password&lt;/a&gt; (mostly so I had easy access to my github credentials, but 1Password is invaluable to me).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://iterm2.com&#34;&gt;iTerm2&lt;/a&gt; (with the &lt;a href=&#34;http://ethanschoonover.com/solarized&#34;&gt;Solarized&lt;/a&gt; theme).&lt;/li&gt;
+&lt;li&gt;The latest vim and Macvim (via homebrew).&lt;/li&gt;
+&lt;li&gt;My &lt;a href=&#34;https://gist.github.com/rothwerx/d206b61f91526742e5e7&#34;&gt;vimrc.&lt;/a&gt; I use &lt;a href=&#34;https://github.com/junegunn/vim-plug&#34;&gt;vim-plug&lt;/a&gt;; I highly recommend it. It&amp;rsquo;s probably time to do a documentation and organization exercise on my vimrc though.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://golang.org&#34;&gt;Golang&lt;/a&gt; (via homebrew) I think I&amp;rsquo;ll have more opportunities to use this language.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pip.readthedocs.org/en/latest/&#34;&gt;pip&lt;/a&gt; (via easy_install), &lt;a href=&#34;http://virtualenv.readthedocs.org/en/latest/&#34;&gt;virtualenv&lt;/a&gt; (via pip), and &lt;a href=&#34;http://virtualenvwrapper.readthedocs.org/en/latest/&#34;&gt;vitualenvwrapper&lt;/a&gt; (via pip).&lt;/li&gt;
+&lt;li&gt;Evernote - Extensive notes will be important.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.alfredapp.com&#34;&gt;Alfred,&lt;/a&gt; a useful launcher/mouse-free utility.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://hugo.spf13.com&#34;&gt;Hugo,&lt;/a&gt; which I&amp;rsquo;m using to create this site. Built with Go.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;m sure there will be a lot more I&amp;rsquo;ll remember I need as I go along. I might go back to using Wunderlist, for example. I&amp;rsquo;ve already got a workstation with &lt;strong&gt;plenty&lt;/strong&gt; of RAM running Microsoft Hyper-V for virtual machines as needed, and I have an ESXi host for testing from an initiator side as well. But the lab side is a subject for a whole other post.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://ordered.io/about</link>
+      <pubDate>Sun, 07 Sep 2014 01:13:54 UTC</pubDate>
+      
+      <guid>http://ordered.io/about</guid>
+      <description>&lt;p&gt;I have been a system administrator specializing in UNIX systems and networks for over 12 years. For the last 4 years I&amp;rsquo;ve worked at an innovative hardware company that makes enterprise PCIe flash products that are some of the most performant products available to system administrators.&lt;/p&gt;
+
+&lt;p&gt;My latest role is that of Performance Engineer, where I&amp;rsquo;ll be diving into the challenges of instrumenting at a system level, observing bottlenecks, and coming up with strategies and best practice for removing those bottlenecks. I&amp;rsquo;ll be working with the supremely smart people dedicated to our All Flash Array (AFA) product, and my aim is to help make our AFA the best in the industry.&lt;/p&gt;
+
+&lt;p&gt;This site serves to document the things I learn along the way.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
