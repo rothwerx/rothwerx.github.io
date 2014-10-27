@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-    <title>X &middot; ordered.io</title>
+    <title>Graphs &middot; ordered.io</title>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
     
@@ -58,7 +58,7 @@
                             
                             
                                 under 
-                                <a class="post-category post-category-x" href="/categories/x">x</a><a class="post-category post-category-y" href="/categories/y">y</a>
+                                <a class="post-category post-category-Infrastructure" href="/categories/infrastructure">Infrastructure</a>
                             
                         </p>
                     </header>
@@ -66,7 +66,7 @@
                     <div class="post-description">
                         <p>Setting up my lab environment for testing can be messy and confusing. I&rsquo;m not just talking about the cable mess, but also how my 8 initiator systems are going to connect to my 2 target systems so that they&rsquo;ve each got multiple paths. Different multipath options affect the resulting performance numbers, so it&rsquo;s important to have the multiple paths.</p>
 
-<p>To help me visualize how I was going to have to address my NICs (for a 40Gb/s iSCSI test) for an even distribution between my initiators, I started by drawing it out on paper. But that&rsquo;s not very good for documenting my configuration for the test library archive. So I looked into more portable options and found <a href="http://graphviz.org">Graphviz</a>. This isn&rsquo;t an obscure piece of software, I&rsquo;ve seen it mentioned around, but I didn&rsquo;t know how easy it is to get started using it.</p>
+<p>To help me visualize how I was going to have to address my NICs (for a 40Gb/s iSCSI test) for an even distribution between my initiators, I started by drawing it out on paper. But that&rsquo;s not very good for documenting my configuration for the test library archive. So I looked into more portable options and found <a href="http://graphviz.org">Graphviz</a>. This isn&rsquo;t an obscure piece of software, I&rsquo;ve seen it mentioned around, but I didn&rsquo;t know how easy it is to get started using it. I don&rsquo;t really run any Linux systems with a GUI but it&rsquo;s available on my Mac via Homebrew.</p>
 
 <p>A pretty simple .dot file like this:</p>
 
@@ -115,7 +115,9 @@
 <p><img src="/img/iscsimultipath1.png" alt="iSCSI multipath" />
 </p>
 
-<p>With a simple command, in this case: <code>$ dot -Tpng iscsi.dot -o iscsi.png</code></p>
+<p>All with a simple command, in this case: <code>$ dot -Tpng iscsi.dot -o iscsi.png</code></p>
+
+<p>It&rsquo;s much more flexible than that, but the one thing I wish it had was output to ascii. <a href="http://search.cpan.org/~tels/Graph-Easy/bin/graph-easy">Graph-Easy</a> has ascii output, even from the Graphviz .dot files, but the rendering isn&rsquo;t too great in my testing.</p>
 
                     </div>
                 </section>

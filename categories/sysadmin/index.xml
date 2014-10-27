@@ -3,7 +3,7 @@
   <channel>
       <title>Sysadmin on ordered.io </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://ordered.io/categories/sysadmin/index.xml</link>
+    <link>http://localhost:1313/categories/sysadmin/index.xml/</link>
     <language>en-us</language>
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Matching LSI RAID volumes to Linux volumes</title>
-      <link>http://ordered.io/post/matching_lsi_and_linux_volumes</link>
+      <link>http://localhost:1313/post/matching_lsi_and_linux_volumes/</link>
       <pubDate>Wed, 10 Sep 2014 18:36:26 UTC</pubDate>
       
-      <guid>http://ordered.io/post/matching_lsi_and_linux_volumes</guid>
+      <guid>http://localhost:1313/post/matching_lsi_and_linux_volumes/</guid>
       <description>&lt;p&gt;If you use LSI RAID controllers and have the tw_cli tool installed in Linux, you can correlate the LSI RAID volumes with Linux volumes by matching their serial numbers. So with tw_cli, assuming you&amp;rsquo;re interested in the first unit of controller 4:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;tw_cli /c4/u0 show serial

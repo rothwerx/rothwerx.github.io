@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Command-Line on ordered.io </title>
+      <title>Graphs on ordered.io </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://localhost:1313/tags/command-line/index.xml/</link>
+    <link>http://localhost:1313/tags/graphs/index.xml/</link>
     <language>en-us</language>
     
     
@@ -69,16 +69,6 @@
 &lt;p&gt;All with a simple command, in this case: &lt;code&gt;$ dot -Tpng iscsi.dot -o iscsi.png&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s much more flexible than that, but the one thing I wish it had was output to ascii. &lt;a href=&#34;http://search.cpan.org/~tels/Graph-Easy/bin/graph-easy&#34;&gt;Graph-Easy&lt;/a&gt; has ascii output, even from the Graphviz .dot files, but the rendering isn&amp;rsquo;t too great in my testing.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>iTerm and dir_colors</title>
-      <link>http://localhost:1313/post/iterm_and_dircolors/</link>
-      <pubDate>Tue, 09 Sep 2014 19:46:35 UTC</pubDate>
-      
-      <guid>http://localhost:1313/post/iterm_and_dircolors/</guid>
-      <description>&lt;p&gt;When using iTerm2, if you duplicate the default profile, the reported terminal type (&lt;em&gt;Preferences-&amp;gt;Profiles-&amp;gt;Terminal-&amp;gt;Report Terminal Type&lt;/em&gt;) is set to &lt;code&gt;xterm-256color&lt;/code&gt;. Some distributions, like the CentOS 5 server I just logged into, don&amp;rsquo;t have a condition for the &lt;code&gt;xterm-256color&lt;/code&gt; TERM type in the &lt;code&gt;/etc/profile.d/colorls.sh&lt;/code&gt; script. As a result, you won&amp;rsquo;t get color output from ls. Changing my iTerm profile to &lt;code&gt;xterm-color&lt;/code&gt; gave me colored ls output on my next login without having to putz around with dircolors. Obviously you could change settings on the target server side too, but why?&lt;/p&gt;
 </description>
     </item>
     

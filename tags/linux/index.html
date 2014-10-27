@@ -25,7 +25,7 @@
     <div class="sidebar pure-u-1 pure-u-md-1-4">
     <div class="header">
         <hgroup>
-            <h1 class="brand-title"><a href="http://ordered.io">ordered.io</a></h1>
+            <h1 class="brand-title"><a href="http://localhost:1313">ordered.io</a></h1>
             <h2 class="brand-tagline"> Random io about performance engineering in the world of NAND flash. </h2>
         </hgroup>
 
@@ -52,7 +52,7 @@
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="http://ordered.io/post/matching_lsi_and_linux_volumes" class="post-title">Matching LSI RAID volumes to Linux volumes</a>
+                        <a href="http://localhost:1313/post/matching_lsi_and_linux_volumes/" class="post-title">Matching LSI RAID volumes to Linux volumes</a>
 
                         <p class="post-meta">
                             
@@ -98,7 +98,7 @@ ID_SCSI_SERIAL=9WM4ZHBK1C5E4D0022CB
                 <section class="post">
                     <header class="post-header">
 
-                        <a href="http://ordered.io/post/iterm_and_dircolors" class="post-title">iTerm and dir_colors</a>
+                        <a href="http://localhost:1313/post/iterm_and_dircolors/" class="post-title">iTerm and dir_colors</a>
 
                         <p class="post-meta">
                             
@@ -127,5 +127,8 @@ ID_SCSI_SERIAL=9WM4ZHBK1C5E4D0022CB
         </div>
     </div>
 </div>
-</body>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>
