@@ -7,7 +7,78 @@
     <language>en-us</language>
     
     
-    <updated>Wed, 10 Sep 2014 18:36:26 UTC</updated>
+    <updated>Tue, 11 Nov 2014 11:30:29 MST</updated>
+    
+    <item>
+      <title>Map block devices to iSCSI targets</title>
+      <link>http://localhost:1313/post/map_block_devices_to_targets/</link>
+      <pubDate>Tue, 11 Nov 2014 11:30:29 MST</pubDate>
+      
+      <guid>http://localhost:1313/post/map_block_devices_to_targets/</guid>
+      <description>&lt;p&gt;This is just a quick hack but it might be useful to someone. With open-iscsi you can use &amp;ldquo;iscsiadm -m session -P3&amp;rdquo; to see which sessions provide which block device, but the output is long and not the easiest to grok.&lt;/p&gt;
+
+&lt;p&gt;For example, I have an initiator with 2 LU&amp;rsquo;s, each LU mapping to a different target. I want to verify which is which because mpathc is giving me less performance than the other.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[root@n10 ]# multipath -ll
+mpathb (23533366333336363) dm-6 FUSIONIO, LUN
+size=1.4T features=&#39;3 queue_if_no_path pg_init_retries 50&#39; hwhandler=&#39;1 alua&#39; wp=rw
+`-+- policy=&#39;queue-length 0&#39; prio=130 status=active
+  |- 87:0:0:0  sdb 8:16  active ready running
+  |- 88:0:0:0  sdd 8:48  active ready running
+  |- 89:0:0:0  sde 8:64  active ready running
+  |- 90:0:0:0  sdf 8:80  active ready running
+  |- 95:0:0:0  sdg 8:96  active ready running
+  |- 96:0:0:0  sdl 8:176 active ready running
+  |- 98:0:0:0  sdm 8:192 active ready running
+  `- 97:0:0:0  sdn 8:208 active ready running
+mpathc (23837616466643737) dm-7 FUSIONIO, LUN
+size=1.4T features=&#39;3 queue_if_no_path pg_init_retries 50&#39; hwhandler=&#39;1 alua&#39; wp=rw
+`-+- policy=&#39;queue-length 0&#39; prio=130 status=active
+  |- 91:0:0:0  sdc 8:32  active ready running
+  |- 92:0:0:0  sdh 8:112 active ready running
+  |- 93:0:0:0  sdi 8:128 active ready running
+  |- 94:0:0:0  sdj 8:144 active ready running
+  |- 99:0:0:0  sdk 8:160 active ready running
+  |- 101:0:0:0 sdo 8:224 active ready running
+  |- 100:0:0:0 sdp 8:240 active ready running
+  `- 102:0:0:0 sdq 65:0  active ready running
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This represents 2 paths per LU, 4 sessions per path. I cobbled together a quick awk script that maps the targets to the block devices:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Works with iscsiadm from iscsi-initiator-utils-6.2.0.873-2.el6
+iscsiadm -m session -P3 |
+  awk &#39;/Current/ { portal=$3 }; /Attached/ { bdev=$4 }; {if (length(bdev) != 0) print portal &amp;quot;: &amp;quot; bdev }&#39; |
+  awk -F&amp;quot;:&amp;quot; &#39;{print $1 &amp;quot;:&amp;quot; $3}&#39; |
+  sort -t . -k 3,3n -k 4,4n | sort -u
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Two awk invocations and two sort invocations, so like I said, it&amp;rsquo;s a hack. Anyway, it gives me:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;192.168.11.5: sdg
+192.168.11.5: sdh
+192.168.11.5: sdl
+192.168.11.5: sdm
+192.168.11.5: sdn
+192.168.11.6: sdc
+192.168.11.6: sdd
+192.168.11.6: sdh
+192.168.11.6: sdi
+192.168.11.6: sdj
+192.168.13.5: sdb
+192.168.13.5: sdd
+192.168.13.5: sde
+192.168.13.5: sdf
+192.168.13.6: sdk
+192.168.13.6: sdl
+192.168.13.6: sdo
+192.168.13.6: sdp
+192.168.13.6: sdq
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;My targets are differentiated by the final octet, so from this I can gather that mpathb maps to my .5 target, while mpathc maps to my .6 target. I&amp;rsquo;m coming for you, .6.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Matching LSI RAID volumes to Linux volumes</title>

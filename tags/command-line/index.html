@@ -48,6 +48,88 @@
             
             <div class="posts">
                 
+                <h1 class="content-subhead">11 Nov 2014, 11:30</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="http://localhost:1313/post/map_block_devices_to_targets/" class="post-title">Map block devices to iSCSI targets</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                <a class="post-category post-category-Sysadmin" href="/categories/sysadmin">Sysadmin</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <p>This is just a quick hack but it might be useful to someone. With open-iscsi you can use &ldquo;iscsiadm -m session -P3&rdquo; to see which sessions provide which block device, but the output is long and not the easiest to grok.</p>
+
+<p>For example, I have an initiator with 2 LU&rsquo;s, each LU mapping to a different target. I want to verify which is which because mpathc is giving me less performance than the other.</p>
+
+<pre><code>[root@n10 ]# multipath -ll
+mpathb (23533366333336363) dm-6 FUSIONIO, LUN
+size=1.4T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='queue-length 0' prio=130 status=active
+  |- 87:0:0:0  sdb 8:16  active ready running
+  |- 88:0:0:0  sdd 8:48  active ready running
+  |- 89:0:0:0  sde 8:64  active ready running
+  |- 90:0:0:0  sdf 8:80  active ready running
+  |- 95:0:0:0  sdg 8:96  active ready running
+  |- 96:0:0:0  sdl 8:176 active ready running
+  |- 98:0:0:0  sdm 8:192 active ready running
+  `- 97:0:0:0  sdn 8:208 active ready running
+mpathc (23837616466643737) dm-7 FUSIONIO, LUN
+size=1.4T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
+`-+- policy='queue-length 0' prio=130 status=active
+  |- 91:0:0:0  sdc 8:32  active ready running
+  |- 92:0:0:0  sdh 8:112 active ready running
+  |- 93:0:0:0  sdi 8:128 active ready running
+  |- 94:0:0:0  sdj 8:144 active ready running
+  |- 99:0:0:0  sdk 8:160 active ready running
+  |- 101:0:0:0 sdo 8:224 active ready running
+  |- 100:0:0:0 sdp 8:240 active ready running
+  `- 102:0:0:0 sdq 65:0  active ready running
+</code></pre>
+
+<p>This represents 2 paths per LU, 4 sessions per path. I cobbled together a quick awk script that maps the targets to the block devices:</p>
+
+<pre><code># Works with iscsiadm from iscsi-initiator-utils-6.2.0.873-2.el6
+iscsiadm -m session -P3 |
+  awk '/Current/ { portal=$3 }; /Attached/ { bdev=$4 }; {if (length(bdev) != 0) print portal &quot;: &quot; bdev }' |
+  awk -F&quot;:&quot; '{print $1 &quot;:&quot; $3}' |
+  sort -t . -k 3,3n -k 4,4n | sort -u
+</code></pre>
+
+<p>Two awk invocations and two sort invocations, so like I said, it&rsquo;s a hack. Anyway, it gives me:</p>
+
+<pre><code>192.168.11.5: sdg
+192.168.11.5: sdh
+192.168.11.5: sdl
+192.168.11.5: sdm
+192.168.11.5: sdn
+192.168.11.6: sdc
+192.168.11.6: sdd
+192.168.11.6: sdh
+192.168.11.6: sdi
+192.168.11.6: sdj
+192.168.13.5: sdb
+192.168.13.5: sdd
+192.168.13.5: sde
+192.168.13.5: sdf
+192.168.13.6: sdk
+192.168.13.6: sdl
+192.168.13.6: sdo
+192.168.13.6: sdp
+192.168.13.6: sdq
+</code></pre>
+
+<p>My targets are differentiated by the final octet, so from this I can gather that mpathb maps to my .5 target, while mpathc maps to my .6 target. I&rsquo;m coming for you, .6.</p>
+
+                    </div>
+                </section>
+                
                 <h1 class="content-subhead">27 Oct 2014, 12:41</h1>
                 <section class="post">
                     <header class="post-header">
@@ -71,41 +153,58 @@
 <p>A pretty simple .dot file like this:</p>
 
 <pre><code>graph iscsi {
-  graph [pad=&quot;.75&quot;, ranksep=&quot;1.00&quot;, nodesep=&quot;0.25&quot;];
+// $ dot -Tpng iscsi.dot -o iscsi.png
+  graph [pad=&quot;.75&quot;, ranksep=&quot;5.50&quot;, nodesep=&quot;0.25&quot;];
   node [shape=box]
-  rankdir = RL
+  rankdir = LR
 
   subgraph cluster_t5 {
     label = &quot;t5&quot;;
-    target52 [label=&quot;eth2&quot;]
-    target54 [label=&quot;eth4&quot;]
-    target56 [label=&quot;eth6&quot;]
-    target57 [label=&quot;eth7&quot;]
+    target51 [label=&quot;eth2&quot;]
+    target52 [label=&quot;eth4&quot;]
+    target53 [label=&quot;eth6&quot;]
+    target54 [label=&quot;eth7&quot;]
   }
   subgraph cluster_t6 {
     label = &quot;t6&quot;;
-    target62 [label=&quot;eth2&quot;]
-    target65 [label=&quot;eth5&quot;]
-    target66 [label=&quot;eth6&quot;]
-    target67 [label=&quot;eth7&quot;]
+    target61 [label=&quot;eth2&quot;]
+    target62 [label=&quot;eth4&quot;]
+    target63 [label=&quot;eth6&quot;]
+    target64 [label=&quot;eth7&quot;]
   }
 
-  target52 -- n10 [label=&quot;192.168.52.x&quot;]
-  target56 -- n10 [label=&quot;192.168.56.x&quot;]
-  target54 -- n11 [label=&quot;192.168.54.x&quot;]
-  target57 -- n11 [label=&quot;192.168.57.x&quot;]
-  target52 -- n12 [label=&quot;192.168.52.x&quot;]
-  target56 -- n12 [label=&quot;192.168.56.x&quot;]
-  target54 -- n13 [label=&quot;192.168.54.x&quot;]
-  target57 -- n13 [label=&quot;192.168.57.x&quot;]
-  target62 -- n14 [label=&quot;192.168.52.x&quot;]
-  target66 -- n14 [label=&quot;192.168.56.x&quot;]
-  target65 -- n15 [label=&quot;192.168.55.x&quot;]
-  target67 -- n15 [label=&quot;192.168.57.x&quot;]
-  target62 -- n16 [label=&quot;192.168.52.x&quot;]
-  target66 -- n16 [label=&quot;192.168.56.x&quot;]
-  target67 -- n17 [label=&quot;192.168.57.x&quot;]
-  target65 -- n17 [label=&quot;192.168.55.x&quot;]
+  n10 -- target51 [label=&quot;192.168.11.x&quot;]
+  n10 -- target52 [label=&quot;192.168.13.x&quot;]
+  n10 -- target61 [label=&quot;192.168.11.x&quot;]
+  n10 -- target62 [label=&quot;192.168.13.x&quot;]
+  n11 -- target53 [label=&quot;192.168.12.x&quot;]
+  n11 -- target54 [label=&quot;192.168.14.x&quot;]
+  n11 -- target63 [label=&quot;192.168.12.x&quot;]
+  n11 -- target64 [label=&quot;192.168.14.x&quot;]
+  n12 -- target51 [label=&quot;192.168.11.x&quot;]
+  n12 -- target52 [label=&quot;192.168.13.x&quot;]
+  n12 -- target61 [label=&quot;192.168.11.x&quot;]
+  n12 -- target62 [label=&quot;192.168.13.x&quot;]
+  n13 -- target53 [label=&quot;192.168.12.x&quot;]
+  n13 -- target54 [label=&quot;192.168.14.x&quot;]
+  n13 -- target63 [label=&quot;192.168.12.x&quot;]
+  n13 -- target64 [label=&quot;192.168.14.x&quot;]
+  n14 -- target51 [label=&quot;192.168.11.x&quot;]
+  n14 -- target52 [label=&quot;192.168.13.x&quot;]
+  n14 -- target61 [label=&quot;192.168.11.x&quot;]
+  n14 -- target62 [label=&quot;192.168.13.x&quot;]
+  n15 -- target53 [label=&quot;192.168.12.x&quot;]
+  n15 -- target54 [label=&quot;192.168.14.x&quot;]
+  n15 -- target63 [label=&quot;192.168.12.x&quot;]
+  n15 -- target64 [label=&quot;192.168.14.x&quot;]
+  n16 -- target51 [label=&quot;192.168.11.x&quot;]
+  n16 -- target52 [label=&quot;192.168.13.x&quot;]
+  n16 -- target61 [label=&quot;192.168.11.x&quot;]
+  n16 -- target62 [label=&quot;192.168.13.x&quot;]
+  n17 -- target53 [label=&quot;192.168.12.x&quot;]
+  n17 -- target54 [label=&quot;192.168.14.x&quot;]
+  n17 -- target63 [label=&quot;192.168.12.x&quot;]
+  n17 -- target64 [label=&quot;192.168.14.x&quot;]
 
 }
 </code></pre>

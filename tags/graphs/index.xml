@@ -22,41 +22,58 @@
 &lt;p&gt;A pretty simple .dot file like this:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;graph iscsi {
-  graph [pad=&amp;quot;.75&amp;quot;, ranksep=&amp;quot;1.00&amp;quot;, nodesep=&amp;quot;0.25&amp;quot;];
+// $ dot -Tpng iscsi.dot -o iscsi.png
+  graph [pad=&amp;quot;.75&amp;quot;, ranksep=&amp;quot;5.50&amp;quot;, nodesep=&amp;quot;0.25&amp;quot;];
   node [shape=box]
-  rankdir = RL
+  rankdir = LR
 
   subgraph cluster_t5 {
     label = &amp;quot;t5&amp;quot;;
-    target52 [label=&amp;quot;eth2&amp;quot;]
-    target54 [label=&amp;quot;eth4&amp;quot;]
-    target56 [label=&amp;quot;eth6&amp;quot;]
-    target57 [label=&amp;quot;eth7&amp;quot;]
+    target51 [label=&amp;quot;eth2&amp;quot;]
+    target52 [label=&amp;quot;eth4&amp;quot;]
+    target53 [label=&amp;quot;eth6&amp;quot;]
+    target54 [label=&amp;quot;eth7&amp;quot;]
   }
   subgraph cluster_t6 {
     label = &amp;quot;t6&amp;quot;;
-    target62 [label=&amp;quot;eth2&amp;quot;]
-    target65 [label=&amp;quot;eth5&amp;quot;]
-    target66 [label=&amp;quot;eth6&amp;quot;]
-    target67 [label=&amp;quot;eth7&amp;quot;]
+    target61 [label=&amp;quot;eth2&amp;quot;]
+    target62 [label=&amp;quot;eth4&amp;quot;]
+    target63 [label=&amp;quot;eth6&amp;quot;]
+    target64 [label=&amp;quot;eth7&amp;quot;]
   }
 
-  target52 -- n10 [label=&amp;quot;192.168.52.x&amp;quot;]
-  target56 -- n10 [label=&amp;quot;192.168.56.x&amp;quot;]
-  target54 -- n11 [label=&amp;quot;192.168.54.x&amp;quot;]
-  target57 -- n11 [label=&amp;quot;192.168.57.x&amp;quot;]
-  target52 -- n12 [label=&amp;quot;192.168.52.x&amp;quot;]
-  target56 -- n12 [label=&amp;quot;192.168.56.x&amp;quot;]
-  target54 -- n13 [label=&amp;quot;192.168.54.x&amp;quot;]
-  target57 -- n13 [label=&amp;quot;192.168.57.x&amp;quot;]
-  target62 -- n14 [label=&amp;quot;192.168.52.x&amp;quot;]
-  target66 -- n14 [label=&amp;quot;192.168.56.x&amp;quot;]
-  target65 -- n15 [label=&amp;quot;192.168.55.x&amp;quot;]
-  target67 -- n15 [label=&amp;quot;192.168.57.x&amp;quot;]
-  target62 -- n16 [label=&amp;quot;192.168.52.x&amp;quot;]
-  target66 -- n16 [label=&amp;quot;192.168.56.x&amp;quot;]
-  target67 -- n17 [label=&amp;quot;192.168.57.x&amp;quot;]
-  target65 -- n17 [label=&amp;quot;192.168.55.x&amp;quot;]
+  n10 -- target51 [label=&amp;quot;192.168.11.x&amp;quot;]
+  n10 -- target52 [label=&amp;quot;192.168.13.x&amp;quot;]
+  n10 -- target61 [label=&amp;quot;192.168.11.x&amp;quot;]
+  n10 -- target62 [label=&amp;quot;192.168.13.x&amp;quot;]
+  n11 -- target53 [label=&amp;quot;192.168.12.x&amp;quot;]
+  n11 -- target54 [label=&amp;quot;192.168.14.x&amp;quot;]
+  n11 -- target63 [label=&amp;quot;192.168.12.x&amp;quot;]
+  n11 -- target64 [label=&amp;quot;192.168.14.x&amp;quot;]
+  n12 -- target51 [label=&amp;quot;192.168.11.x&amp;quot;]
+  n12 -- target52 [label=&amp;quot;192.168.13.x&amp;quot;]
+  n12 -- target61 [label=&amp;quot;192.168.11.x&amp;quot;]
+  n12 -- target62 [label=&amp;quot;192.168.13.x&amp;quot;]
+  n13 -- target53 [label=&amp;quot;192.168.12.x&amp;quot;]
+  n13 -- target54 [label=&amp;quot;192.168.14.x&amp;quot;]
+  n13 -- target63 [label=&amp;quot;192.168.12.x&amp;quot;]
+  n13 -- target64 [label=&amp;quot;192.168.14.x&amp;quot;]
+  n14 -- target51 [label=&amp;quot;192.168.11.x&amp;quot;]
+  n14 -- target52 [label=&amp;quot;192.168.13.x&amp;quot;]
+  n14 -- target61 [label=&amp;quot;192.168.11.x&amp;quot;]
+  n14 -- target62 [label=&amp;quot;192.168.13.x&amp;quot;]
+  n15 -- target53 [label=&amp;quot;192.168.12.x&amp;quot;]
+  n15 -- target54 [label=&amp;quot;192.168.14.x&amp;quot;]
+  n15 -- target63 [label=&amp;quot;192.168.12.x&amp;quot;]
+  n15 -- target64 [label=&amp;quot;192.168.14.x&amp;quot;]
+  n16 -- target51 [label=&amp;quot;192.168.11.x&amp;quot;]
+  n16 -- target52 [label=&amp;quot;192.168.13.x&amp;quot;]
+  n16 -- target61 [label=&amp;quot;192.168.11.x&amp;quot;]
+  n16 -- target62 [label=&amp;quot;192.168.13.x&amp;quot;]
+  n17 -- target53 [label=&amp;quot;192.168.12.x&amp;quot;]
+  n17 -- target54 [label=&amp;quot;192.168.14.x&amp;quot;]
+  n17 -- target63 [label=&amp;quot;192.168.12.x&amp;quot;]
+  n17 -- target64 [label=&amp;quot;192.168.14.x&amp;quot;]
 
 }
 &lt;/code&gt;&lt;/pre&gt;

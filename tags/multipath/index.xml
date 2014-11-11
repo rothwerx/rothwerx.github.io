@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Sysadmin on ordered.io </title>
+      <title>Multipath on ordered.io </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://localhost:1313/categories/sysadmin/index.xml/</link>
+    <link>http://localhost:1313/tags/multipath/index.xml/</link>
     <language>en-us</language>
     
     
@@ -77,41 +77,6 @@ iscsiadm -m session -P3 |
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;My targets are differentiated by the final octet, so from this I can gather that mpathb maps to my .5 target, while mpathc maps to my .6 target. I&amp;rsquo;m coming for you, .6.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Matching LSI RAID volumes to Linux volumes</title>
-      <link>http://localhost:1313/post/matching_lsi_and_linux_volumes/</link>
-      <pubDate>Wed, 10 Sep 2014 18:36:26 UTC</pubDate>
-      
-      <guid>http://localhost:1313/post/matching_lsi_and_linux_volumes/</guid>
-      <description>&lt;p&gt;If you use LSI RAID controllers and have the tw_cli tool installed in Linux, you can correlate the LSI RAID volumes with Linux volumes by matching their serial numbers. So with tw_cli, assuming you&amp;rsquo;re interested in the first unit of controller 4:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tw_cli /c4/u0 show serial
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And you&amp;rsquo;d probably run that for all your volumes.&lt;/p&gt;
-
-&lt;p&gt;Then on the Linux side, you can use udevadm:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;udevadm info --query=property --name=sda | grep ID_SCSI_SERIAL
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So for the server I&amp;rsquo;m looking at, they&amp;rsquo;re set up in just the order you&amp;rsquo;d expect:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;gt; for i in sda sdb sdc sdd; do /sbin/udevadm info --query=property --name=${i} | grep ID_SCSI_SERIAL; done
-ID_SCSI_SERIAL=9WM4R0ZZ1C5E4800E665
-ID_SCSI_SERIAL=9WM4WANB1C5E480079CB
-ID_SCSI_SERIAL=9WM4Y81G1C5E4D004F8B
-ID_SCSI_SERIAL=9WM4ZHBK1C5E4D0022CB
-
-&amp;gt; for i in 0 1 2 3; do tw_cli /c4/u${i} show serial; done
-/c4/u0 serial number = 9WM4R0ZZ1C5E4800E665
-/c4/u1 serial number = 9WM4WANB1C5E480079CB
-/c4/u2 serial number = 9WM4Y81G1C5E4D004F8B
-/c4/u3 serial number = 9WM4ZHBK1C5E4D0022CB
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

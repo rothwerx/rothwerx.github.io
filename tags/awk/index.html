@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-    <title>Linux &middot; ordered.io</title>
+    <title>Awk &middot; ordered.io</title>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
     
@@ -126,73 +126,6 @@ iscsiadm -m session -P3 |
 </code></pre>
 
 <p>My targets are differentiated by the final octet, so from this I can gather that mpathb maps to my .5 target, while mpathc maps to my .6 target. I&rsquo;m coming for you, .6.</p>
-
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">10 Sep 2014, 18:36</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="http://localhost:1313/post/matching_lsi_and_linux_volumes/" class="post-title">Matching LSI RAID volumes to Linux volumes</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                <a class="post-category post-category-Sysadmin" href="/categories/sysadmin">Sysadmin</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <p>If you use LSI RAID controllers and have the tw_cli tool installed in Linux, you can correlate the LSI RAID volumes with Linux volumes by matching their serial numbers. So with tw_cli, assuming you&rsquo;re interested in the first unit of controller 4:</p>
-
-<pre><code>tw_cli /c4/u0 show serial
-</code></pre>
-
-<p>And you&rsquo;d probably run that for all your volumes.</p>
-
-<p>Then on the Linux side, you can use udevadm:</p>
-
-<pre><code>udevadm info --query=property --name=sda | grep ID_SCSI_SERIAL
-</code></pre>
-
-<p>So for the server I&rsquo;m looking at, they&rsquo;re set up in just the order you&rsquo;d expect:</p>
-
-<pre><code>&gt; for i in sda sdb sdc sdd; do /sbin/udevadm info --query=property --name=${i} | grep ID_SCSI_SERIAL; done
-ID_SCSI_SERIAL=9WM4R0ZZ1C5E4800E665
-ID_SCSI_SERIAL=9WM4WANB1C5E480079CB
-ID_SCSI_SERIAL=9WM4Y81G1C5E4D004F8B
-ID_SCSI_SERIAL=9WM4ZHBK1C5E4D0022CB
-
-&gt; for i in 0 1 2 3; do tw_cli /c4/u${i} show serial; done
-/c4/u0 serial number = 9WM4R0ZZ1C5E4800E665
-/c4/u1 serial number = 9WM4WANB1C5E480079CB
-/c4/u2 serial number = 9WM4Y81G1C5E4D004F8B
-/c4/u3 serial number = 9WM4ZHBK1C5E4D0022CB
-</code></pre>
-
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">09 Sep 2014, 19:46</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="http://localhost:1313/post/iterm_and_dircolors/" class="post-title">iTerm and dir_colors</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                <a class="post-category post-category-Shell" href="/categories/shell">Shell</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <p>When using iTerm2, if you duplicate the default profile, the reported terminal type (<em>Preferences-&gt;Profiles-&gt;Terminal-&gt;Report Terminal Type</em>) is set to <code>xterm-256color</code>. Some distributions, like the CentOS 5 server I just logged into, don&rsquo;t have a condition for the <code>xterm-256color</code> TERM type in the <code>/etc/profile.d/colorls.sh</code> script. As a result, you won&rsquo;t get color output from ls. Changing my iTerm profile to <code>xterm-color</code> gave me colored ls output on my next login without having to putz around with dircolors. Obviously you could change settings on the target server side too, but why?</p>
 
                     </div>
                 </section>

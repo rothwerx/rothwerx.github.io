@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2014-10-27T12:41:27-06:00</lastmod>
+    <lastmod>2014-11-11T11:30:29-07:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/map_block_devices_to_targets/</loc>
+    <lastmod>2014-11-11T11:30:29-07:00</lastmod>
   </url>
   
   <url>
