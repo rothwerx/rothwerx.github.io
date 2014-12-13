@@ -3,7 +3,7 @@
   <channel>
       <title>Posts on ordered.io </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://localhost:1313/post/index.xml/</link>
+    <link>http://ordered.io/post/index.xml/</link>
     <language>en-us</language>
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Map block devices to iSCSI targets</title>
-      <link>http://localhost:1313/post/map_block_devices_to_targets/</link>
+      <link>http://ordered.io/post/map_block_devices_to_targets/</link>
       <pubDate>Tue, 11 Nov 2014 11:30:29 MST</pubDate>
       
-      <guid>http://localhost:1313/post/map_block_devices_to_targets/</guid>
+      <guid>http://ordered.io/post/map_block_devices_to_targets/</guid>
       <description>&lt;p&gt;This is just a quick hack but it might be useful to someone. With open-iscsi you can use &amp;ldquo;iscsiadm -m session -P3&amp;rdquo; to see which sessions provide which block device, but the output is long and not the easiest to grok.&lt;/p&gt;
 
 &lt;p&gt;For example, I have an initiator with 2 LU&amp;rsquo;s, each LU mapping to a different target. I want to verify which is which because mpathc is giving me less performance than the other.&lt;/p&gt;
@@ -82,10 +82,10 @@ iscsiadm -m session -P3 |
     
     <item>
       <title>Graphviz for lab configuration visualization</title>
-      <link>http://localhost:1313/post/graphviz/</link>
+      <link>http://ordered.io/post/graphviz/</link>
       <pubDate>Mon, 27 Oct 2014 12:41:27 MDT</pubDate>
       
-      <guid>http://localhost:1313/post/graphviz/</guid>
+      <guid>http://ordered.io/post/graphviz/</guid>
       <description>&lt;p&gt;Setting up my lab environment for testing can be messy and confusing. I&amp;rsquo;m not just talking about the cable mess, but also how my 8 initiator systems are going to connect to my 2 target systems so that they&amp;rsquo;ve each got multiple paths. Different multipath options affect the resulting performance numbers, so it&amp;rsquo;s important to have the multiple paths.&lt;/p&gt;
 
 &lt;p&gt;To help me visualize how I was going to have to address my NICs (for a 40Gb/s iSCSI test) for an even distribution between my initiators, I started by drawing it out on paper. But that&amp;rsquo;s not very good for documenting my configuration for the test library archive. So I looked into more portable options and found &lt;a href=&#34;http://graphviz.org&#34;&gt;Graphviz&lt;/a&gt;. This isn&amp;rsquo;t an obscure piece of software, I&amp;rsquo;ve seen it mentioned around, but I didn&amp;rsquo;t know how easy it is to get started using it. I don&amp;rsquo;t really run any Linux systems with a GUI but it&amp;rsquo;s available on my Mac via Homebrew.&lt;/p&gt;
@@ -162,10 +162,10 @@ iscsiadm -m session -P3 |
     
     <item>
       <title>Matching LSI RAID volumes to Linux volumes</title>
-      <link>http://localhost:1313/post/matching_lsi_and_linux_volumes/</link>
+      <link>http://ordered.io/post/matching_lsi_and_linux_volumes/</link>
       <pubDate>Wed, 10 Sep 2014 18:36:26 UTC</pubDate>
       
-      <guid>http://localhost:1313/post/matching_lsi_and_linux_volumes/</guid>
+      <guid>http://ordered.io/post/matching_lsi_and_linux_volumes/</guid>
       <description>&lt;p&gt;If you use LSI RAID controllers and have the tw_cli tool installed in Linux, you can correlate the LSI RAID volumes with Linux volumes by matching their serial numbers. So with tw_cli, assuming you&amp;rsquo;re interested in the first unit of controller 4:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;tw_cli /c4/u0 show serial
@@ -197,20 +197,20 @@ ID_SCSI_SERIAL=9WM4ZHBK1C5E4D0022CB
     
     <item>
       <title>iTerm and dir_colors</title>
-      <link>http://localhost:1313/post/iterm_and_dircolors/</link>
+      <link>http://ordered.io/post/iterm_and_dircolors/</link>
       <pubDate>Tue, 09 Sep 2014 19:46:35 UTC</pubDate>
       
-      <guid>http://localhost:1313/post/iterm_and_dircolors/</guid>
+      <guid>http://ordered.io/post/iterm_and_dircolors/</guid>
       <description>&lt;p&gt;When using iTerm2, if you duplicate the default profile, the reported terminal type (&lt;em&gt;Preferences-&amp;gt;Profiles-&amp;gt;Terminal-&amp;gt;Report Terminal Type&lt;/em&gt;) is set to &lt;code&gt;xterm-256color&lt;/code&gt;. Some distributions, like the CentOS 5 server I just logged into, don&amp;rsquo;t have a condition for the &lt;code&gt;xterm-256color&lt;/code&gt; TERM type in the &lt;code&gt;/etc/profile.d/colorls.sh&lt;/code&gt; script. As a result, you won&amp;rsquo;t get color output from ls. Changing my iTerm profile to &lt;code&gt;xterm-color&lt;/code&gt; gave me colored ls output on my next login without having to putz around with dircolors. Obviously you could change settings on the target server side too, but why?&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Hello New World</title>
-      <link>http://localhost:1313/post/helloworld/</link>
+      <link>http://ordered.io/post/helloworld/</link>
       <pubDate>Sun, 07 Sep 2014 01:25:10 UTC</pubDate>
       
-      <guid>http://localhost:1313/post/helloworld/</guid>
+      <guid>http://ordered.io/post/helloworld/</guid>
       <description>&lt;p&gt;A new job means setting up new computers and getting comfortable in your environment. As a seasoned ops guy I&amp;rsquo;ve shied away from getting too comfortable in any given environment, because when you&amp;rsquo;re dealing with a constantly growing production environment less customization is better. Vim is a good example. It sucks to log into a machine, fire up vim, go for your favorite keymapping (like F3 for NERDTree), and realizing it&amp;rsquo;s just not available. Which you do over and over again out of shear force of habit.&lt;/p&gt;
 
 &lt;p&gt;You could write your custom environment into a configuration management manifest/recipe/playbook/etc, but the less packages you&amp;rsquo;ve got installed the better. Just ask your security team.&lt;/p&gt;

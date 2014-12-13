@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>http://ordered.io/</loc>
     <lastmod>2014-11-11T11:30:29-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/map_block_devices_to_targets/</loc>
+    <loc>http://ordered.io/post/map_block_devices_to_targets/</loc>
     <lastmod>2014-11-11T11:30:29-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/graphviz/</loc>
+    <loc>http://ordered.io/post/graphviz/</loc>
     <lastmod>2014-10-27T12:41:27-06:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/matching_lsi_and_linux_volumes/</loc>
+    <loc>http://ordered.io/post/matching_lsi_and_linux_volumes/</loc>
     <lastmod>2014-09-10T18:36:26+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/iterm_and_dircolors/</loc>
+    <loc>http://ordered.io/post/iterm_and_dircolors/</loc>
     <lastmod>2014-09-09T19:46:35+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/helloworld/</loc>
+    <loc>http://ordered.io/post/helloworld/</loc>
     <lastmod>2014-09-07T01:25:10+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://ordered.io/about/</loc>
     <lastmod>2014-09-07T01:13:54+00:00</lastmod>
   </url>
   

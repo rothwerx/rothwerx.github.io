@@ -3,7 +3,7 @@
   <channel>
       <title>Iscsi on ordered.io </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://localhost:1313/tags/iscsi/index.xml/</link>
+    <link>http://ordered.io/tags/iscsi/index.xml/</link>
     <language>en-us</language>
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Map block devices to iSCSI targets</title>
-      <link>http://localhost:1313/post/map_block_devices_to_targets/</link>
+      <link>http://ordered.io/post/map_block_devices_to_targets/</link>
       <pubDate>Tue, 11 Nov 2014 11:30:29 MST</pubDate>
       
-      <guid>http://localhost:1313/post/map_block_devices_to_targets/</guid>
+      <guid>http://ordered.io/post/map_block_devices_to_targets/</guid>
       <description>&lt;p&gt;This is just a quick hack but it might be useful to someone. With open-iscsi you can use &amp;ldquo;iscsiadm -m session -P3&amp;rdquo; to see which sessions provide which block device, but the output is long and not the easiest to grok.&lt;/p&gt;
 
 &lt;p&gt;For example, I have an initiator with 2 LU&amp;rsquo;s, each LU mapping to a different target. I want to verify which is which because mpathc is giving me less performance than the other.&lt;/p&gt;
