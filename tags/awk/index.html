@@ -1,156 +1,84 @@
-<!doctype html>
-<html lang="en">
+    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
-
-    <title>Awk &middot; ordered.io</title>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> Awk &middot; ordered.io </title>
     
-        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:1313/css/uno.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:1313/css/lightGallery.css" />
     
-
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.ico">
     
+    <link href="http://localhost:1313/tags/awk/index.xml/" rel="alternate" type="application/rss+xml" title="ordered.io" />
     
-        <link rel="stylesheet" href="/css/blog.css">
-    
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="http://localhost:1313/js/jquery.min.js"></script>
+    <script src="http://localhost:1313/js/main.min.js">
+    </script>
 </head>
-<body>
 
-<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-    <div class="header">
-        <hgroup>
-            <h1 class="brand-title"><a href="http://ordered.io">ordered.io</a></h1>
-            <h2 class="brand-tagline"> Flash storage &amp;&amp; performance engineering </h2>
-        </hgroup>
-
-        <nav class="nav">
-            <ul class="nav-list">
-                <li class="nav-item">
-                    <a class="pure-button" href="http://twitter.com/rothwerx"><i class="fa fa-twitter"></i> Twitter</a>
-                </li>
-                <li class="nav-item">
-                    <a class="pure-button" href="http://github.com/rothwerx "><i class="fa fa-github-alt"></i> github</a>
-                </li>
-               
-            </ul>
-        </nav>
+    <body>
+        <span class="mobile btn-mobile-menu">
+        <i class="fa fa-bars btn-mobile-menu__icon"></i>
+        <i class="fa fa-times btn-mobile-close__icon hidden"></i>
+    </span>
+<header class=" panel-cover " >
+    <div class="panel-main">
+        <div class="panel-main__inner panel-inverted">
+            <div class="panel-main__content"> 
+                <h1 class="panel-cover__title panel-title">
+                    <a href="http://localhost:1313" title="link to homepage for ordered.io">ordered.io</a>
+                </h1>
+                <hr class="panel-cover__divider" />
+                <p class="panel-cover__description">  Flash storage &amp;&amp; performance engineering  </p>
+                <hr class="panel-cover__divider panel-cover__divider--secondary" />
+                <div class="navigation-wrapper">
+                    <nav class="cover-navigation cover-navigation--primary">
+                        <ul class="navigation">
+                            <li class="navigation__item"><a href="/#blog" title="link to ordered.io blog" class="blog-button">Blog</a> </li>
+                            </br>  </ul>
+                    </nav> <nav class="cover-navigation navigation--social">
+    <ul class="navigation"> 
+        
+        <li class="navigation__item">
+            <a href="http://twitter.com/rothwerx" title="@rothwerx on Twitter"> <i class='fa fa-tt'></i> <span class="label">Twitter</span> </a>
+        </li>   
+        
+        <li class="navigation__item">
+            <a href="https://github.com/rothwerx" title="rothwerx on github"> <i class='fa fa-github'></i> <span class="label">Github</span> </a>
+        </li>  </br>  
+        
+        <li class="navigation__item">
+            <a href="http://no.linkedin.com/in/jeremiahroth/en" title="Linkedin"> <i class='fa fa-ll'></i> <span class="label">Linkedin</span> </a>
+        </li>   </ul>
+</nav>
+ </div>
+            </div>
+        </div>
+        <div class="panel-cover--overlay"></div>
     </div>
-</div>
+</header>
 
-    <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
-            
-            <div class="posts">
+        <div class="content-wrapper">
+            <div class="content-wrapper__inner">
                 
-                <h1 class="content-subhead">11 Nov 2014, 11:30</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="http://ordered.io/post/map_block_devices_to_targets/" class="post-title">Map block devices to iSCSI targets</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                <a class="post-category post-category-Sysadmin" href="/categories/sysadmin">Sysadmin</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <p>This is just a quick hack but it might be useful to someone. With open-iscsi you can use &ldquo;iscsiadm -m session -P3&rdquo; to see which sessions provide which block device, but the output is long and not the easiest to grok.</p>
-
-<p>For example, I have an initiator with 2 LU&rsquo;s, each LU mapping to a different target. I want to verify which is which because mpathc is giving me less performance than the other.</p>
-
-<pre><code>[root@n10 ]# multipath -ll
-mpathb (23533366333336363) dm-6 FUSIONIO, LUN
-size=1.4T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-`-+- policy='queue-length 0' prio=130 status=active
-  |- 87:0:0:0  sdb 8:16  active ready running
-  |- 88:0:0:0  sdd 8:48  active ready running
-  |- 89:0:0:0  sde 8:64  active ready running
-  |- 90:0:0:0  sdf 8:80  active ready running
-  |- 95:0:0:0  sdg 8:96  active ready running
-  |- 96:0:0:0  sdl 8:176 active ready running
-  |- 98:0:0:0  sdm 8:192 active ready running
-  `- 97:0:0:0  sdn 8:208 active ready running
-mpathc (23837616466643737) dm-7 FUSIONIO, LUN
-size=1.4T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp=rw
-`-+- policy='queue-length 0' prio=130 status=active
-  |- 91:0:0:0  sdc 8:32  active ready running
-  |- 92:0:0:0  sdh 8:112 active ready running
-  |- 93:0:0:0  sdi 8:128 active ready running
-  |- 94:0:0:0  sdj 8:144 active ready running
-  |- 99:0:0:0  sdk 8:160 active ready running
-  |- 101:0:0:0 sdo 8:224 active ready running
-  |- 100:0:0:0 sdp 8:240 active ready running
-  `- 102:0:0:0 sdq 65:0  active ready running
-</code></pre>
-
-<p>This represents 2 paths per LU, 4 sessions per path. I cobbled together a quick awk script that maps the targets to the block devices:</p>
-
-<pre><code># Works with iscsiadm from iscsi-initiator-utils-6.2.0.873-2.el6
-iscsiadm -m session -P3 |
-  awk '/Current/ { portal=$3 }; /Attached/ { bdev=$4 }; {if (length(bdev) != 0) print portal &quot;: &quot; bdev }' |
-  awk -F&quot;:&quot; '{print $1 &quot;:&quot; $3}' |
-  sort -t . -k 3,3n -k 4,4n | sort -u
-</code></pre>
-
-<p>Two awk invocations and two sort invocations, so like I said, it&rsquo;s a hack. Anyway, it gives me:</p>
-
-<pre><code>192.168.11.5: sdg
-192.168.11.5: sdh
-192.168.11.5: sdl
-192.168.11.5: sdm
-192.168.11.5: sdn
-192.168.11.6: sdc
-192.168.11.6: sdd
-192.168.11.6: sdh
-192.168.11.6: sdi
-192.168.11.6: sdj
-192.168.13.5: sdb
-192.168.13.5: sdd
-192.168.13.5: sde
-192.168.13.5: sdf
-192.168.13.6: sdk
-192.168.13.6: sdl
-192.168.13.6: sdo
-192.168.13.6: sdp
-192.168.13.6: sdq
-</code></pre>
-
-<p>My targets are differentiated by the final octet, so from this I can gather that mpathb maps to my .5 target, while mpathc maps to my .6 target. I&rsquo;m coming for you, .6.</p>
-
-                    </div>
-                </section>
+                <h2>2014</h2>
+                <ul id="list">
+                    
+                    <li>
+                        <a href="http://localhost:1313/post/map_block_devices_to_targets/">Map block devices to iSCSI targets </a>
+                        <div class="meta">Tue, Nov 11, 2014</div>
+                    </li>
+                    
+                </ul>
                 
             </div>
-            <div class="footer">
-    <div class="pure-menu pure-menu-horizontal pure-menu-open">
-        <ul>
-           <li>Powered by <a class="hugo" href="http://hugo.spf13.com/" target="_blank">hugo</a></li>
-        </ul>
-    </div>
-</div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-              })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-3716858-6', 'auto');
-    ga('send', 'pageview');
-
-</script>
-
         </div>
-    </div>
-</div>
-</body>
+    <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+    
 </html>
