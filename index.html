@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title> ordered.io &middot; ordered.io </title>
     
-    <link rel="stylesheet" type="text/css" href="http://ordered.io/css/uno.min.css" />
-    <link rel="stylesheet" type="text/css" href="http://ordered.io/css/lightGallery.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:1313/css/uno.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:1313/css/lightGallery.css" />
     
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="/favicon.ico">
     
-    <link href="http://ordered.io/index.xml/" rel="alternate" type="application/rss+xml" title="ordered.io" />
+    <link href="http://localhost:1313/index.xml/" rel="alternate" type="application/rss+xml" title="ordered.io" />
     
-    <script src="http://ordered.io/js/jquery.min.js"></script>
-    <script src="http://ordered.io/js/main.min.js">
+    <script src="http://localhost:1313/js/jquery.min.js"></script>
+    <script src="http://localhost:1313/js/main.min.js">
     </script>
 </head>
 
@@ -24,12 +24,12 @@
         <i class="fa fa-bars btn-mobile-menu__icon"></i>
         <i class="fa fa-times btn-mobile-close__icon hidden"></i>
     </span>
-<header class=" panel-cover " >
+<header class=" panel-cover "  style="background-image: url(/img/1ms.jpg)" >
     <div class="panel-main">
         <div class="panel-main__inner panel-inverted">
             <div class="panel-main__content"> 
                 <h1 class="panel-cover__title panel-title">
-                    <a href="http://ordered.io" title="link to homepage for ordered.io">ordered.io</a>
+                    <a href="http://localhost:1313" title="link to homepage for ordered.io">ordered.io</a>
                 </h1>
                 <hr class="panel-cover__divider" />
                 <p class="panel-cover__description">  Flash storage &amp;&amp; performance engineering  </p>
@@ -69,14 +69,14 @@
                             
                                 <article class="post">
 <header>
-<h2><a href="http://ordered.io/post/map_block_devices_to_targets/">Map block devices to iSCSI targets </a> </h2>
+<h2><a href="http://localhost:1313/post/map_block_devices_to_targets/">Map block devices to iSCSI targets </a> </h2>
 <div class="post-meta">Tue, Nov 11, 2014 - Read in 2 Min </div>
 </header>
 <div class="summary">
     This is just a quick hack but it might be useful to someone. With open-iscsi you can use &ldquo;iscsiadm -m session -P3&rdquo; to see which sessions provide which block device, but the output is long and not the easiest to grok. For example, I have an initiator with 2 LU&rsquo;s, each LU mapping to a different target. I want to verify which is which because mpathc is giving me less performance than the other.
 </div>
 <footer>
-<a href='http://ordered.io/post/map_block_devices_to_targets/'><nobr>Read more →</nobr></a>
+<a href='http://localhost:1313/post/map_block_devices_to_targets/'><nobr>Read more →</nobr></a>
 </footer>
 </article>
 
@@ -86,14 +86,14 @@
                             
                                 <article class="post">
 <header>
-<h2><a href="http://ordered.io/post/graphviz/">Graphviz for lab configuration visualization </a> </h2>
+<h2><a href="http://localhost:1313/post/graphviz/">Graphviz for lab configuration visualization </a> </h2>
 <div class="post-meta">Mon, Oct 27, 2014 - Read in 2 Min </div>
 </header>
 <div class="summary">
     Setting up my lab environment for testing can be messy and confusing. I&rsquo;m not just talking about the cable mess, but also how my 8 initiator systems are going to connect to my 2 target systems so that they&rsquo;ve each got multiple paths. Different multipath options affect the resulting performance numbers, so it&rsquo;s important to have the multiple paths. To help me visualize how I was going to have to address my NICs (for a 40Gb/s iSCSI test) for an even distribution between my initiators, I started by drawing it out on paper.
 </div>
 <footer>
-<a href='http://ordered.io/post/graphviz/'><nobr>Read more →</nobr></a>
+<a href='http://localhost:1313/post/graphviz/'><nobr>Read more →</nobr></a>
 </footer>
 </article>
 
@@ -103,14 +103,14 @@
                             
                                 <article class="post">
 <header>
-<h2><a href="http://ordered.io/post/matching_lsi_and_linux_volumes/">Matching LSI RAID volumes to Linux volumes </a> </h2>
+<h2><a href="http://localhost:1313/post/matching_lsi_and_linux_volumes/">Matching LSI RAID volumes to Linux volumes </a> </h2>
 <div class="post-meta">Wed, Sep 10, 2014 - Read in 1 Min </div>
 </header>
 <div class="summary">
     If you use LSI RAID controllers and have the tw_cli tool installed in Linux, you can correlate the LSI RAID volumes with Linux volumes by matching their serial numbers. So with tw_cli, assuming you&rsquo;re interested in the first unit of controller 4: tw_cli /c4/u0 show serial And you&rsquo;d probably run that for all your volumes. Then on the Linux side, you can use udevadm: udevadm info --query=property --name=sda | grep
 </div>
 <footer>
-<a href='http://ordered.io/post/matching_lsi_and_linux_volumes/'><nobr>Read more →</nobr></a>
+<a href='http://localhost:1313/post/matching_lsi_and_linux_volumes/'><nobr>Read more →</nobr></a>
 </footer>
 </article>
 
@@ -120,14 +120,14 @@
                             
                                 <article class="post">
 <header>
-<h2><a href="http://ordered.io/post/iterm_and_dircolors/">iTerm and dir_colors </a> </h2>
+<h2><a href="http://localhost:1313/post/iterm_and_dircolors/">iTerm and dir_colors </a> </h2>
 <div class="post-meta">Tue, Sep 9, 2014 - Read in 1 Min </div>
 </header>
 <div class="summary">
     When using iTerm2, if you duplicate the default profile, the reported terminal type (Preferences-&gt;Profiles-&gt;Terminal-&gt;Report Terminal Type) is set to xterm-256color. Some distributions, like the CentOS 5 server I just logged into, don&rsquo;t have a condition for the xterm-256color TERM type in the /etc/profile.d/colorls.sh script. As a result, you won&rsquo;t get color output from ls. Changing my iTerm profile to xterm-color gave me colored ls output on my next login without having to putz around with dircolors.
 </div>
 <footer>
-<a href='http://ordered.io/post/iterm_and_dircolors/'><nobr>Read more →</nobr></a>
+<a href='http://localhost:1313/post/iterm_and_dircolors/'><nobr>Read more →</nobr></a>
 </footer>
 </article>
 
@@ -137,14 +137,14 @@
                             
                                 <article class="post">
 <header>
-<h2><a href="http://ordered.io/post/helloworld/">Hello New World </a> </h2>
+<h2><a href="http://localhost:1313/post/helloworld/">Hello New World </a> </h2>
 <div class="post-meta">Sun, Sep 7, 2014 - Read in 2 Min </div>
 </header>
 <div class="summary">
     A new job means setting up new computers and getting comfortable in your environment. As a seasoned ops guy I&rsquo;ve shied away from getting too comfortable in any given environment, because when you&rsquo;re dealing with a constantly growing production environment less customization is better. Vim is a good example. It sucks to log into a machine, fire up vim, go for your favorite keymapping (like F3 for NERDTree), and realizing it&rsquo;s just not available.
 </div>
 <footer>
-<a href='http://ordered.io/post/helloworld/'><nobr>Read more →</nobr></a>
+<a href='http://localhost:1313/post/helloworld/'><nobr>Read more →</nobr></a>
 </footer>
 </article>
 
@@ -180,5 +180,8 @@
 </script>
 
         
-    </body>
+    <script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>

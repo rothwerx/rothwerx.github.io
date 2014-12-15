@@ -3,7 +3,7 @@
   <channel>
       <title>Apps on ordered.io </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://ordered.io/tags/apps/index.xml/</link>
+    <link>http://localhost:1313/tags/apps/index.xml/</link>
     <language>en-us</language>
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Hello New World</title>
-      <link>http://ordered.io/post/helloworld/</link>
+      <link>http://localhost:1313/post/helloworld/</link>
       <pubDate>Sun, 07 Sep 2014 01:25:10 UTC</pubDate>
       
-      <guid>http://ordered.io/post/helloworld/</guid>
+      <guid>http://localhost:1313/post/helloworld/</guid>
       <description>&lt;p&gt;A new job means setting up new computers and getting comfortable in your environment. As a seasoned ops guy I&amp;rsquo;ve shied away from getting too comfortable in any given environment, because when you&amp;rsquo;re dealing with a constantly growing production environment less customization is better. Vim is a good example. It sucks to log into a machine, fire up vim, go for your favorite keymapping (like F3 for NERDTree), and realizing it&amp;rsquo;s just not available. Which you do over and over again out of shear force of habit.&lt;/p&gt;
 
 &lt;p&gt;You could write your custom environment into a configuration management manifest/recipe/playbook/etc, but the less packages you&amp;rsquo;ve got installed the better. Just ask your security team.&lt;/p&gt;
