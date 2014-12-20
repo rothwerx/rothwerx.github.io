@@ -99,12 +99,17 @@ size=1.4T features='3 queue_if_no_path pg_init_retries 50' hwhandler='1 alua' wp
 
 <pre><code># Works with iscsiadm from iscsi-initiator-utils-6.2.0.873-2.el6
 iscsiadm -m session -P3 |
-  awk '/Current/ { portal=$3 }; /Attached/ { bdev=$4 }; {if (length(bdev) != 0) print portal &quot;: &quot; bdev }' |
-  awk -F&quot;:&quot; '{print $1 &quot;:&quot; $3}' |
-  sort -t . -k 3,3n -k 4,4n | sort -u
+  awk -F[:\\t&quot; &quot;] '/Current/ {
+    portal=$5
+  };
+  /Attached/ {
+    bdev=$7;
+    if (length(bdev) != 0) print portal &quot;: &quot; bdev
+  }' |
+  sort -t . -k 3,3n -k 4,4n
 </code></pre>
 
-<p>Two awk invocations and two sort invocations, so like I said, it&rsquo;s a hack. Anyway, it gives me:</p>
+<p>Which gives me:</p>
 
 <pre><code>192.168.11.5: sdg
 192.168.11.5: sdh

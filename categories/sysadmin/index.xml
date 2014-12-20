@@ -48,12 +48,17 @@ size=1.4T features=&#39;3 queue_if_no_path pg_init_retries 50&#39; hwhandler=&#3
 
 &lt;pre&gt;&lt;code&gt;# Works with iscsiadm from iscsi-initiator-utils-6.2.0.873-2.el6
 iscsiadm -m session -P3 |
-  awk &#39;/Current/ { portal=$3 }; /Attached/ { bdev=$4 }; {if (length(bdev) != 0) print portal &amp;quot;: &amp;quot; bdev }&#39; |
-  awk -F&amp;quot;:&amp;quot; &#39;{print $1 &amp;quot;:&amp;quot; $3}&#39; |
-  sort -t . -k 3,3n -k 4,4n | sort -u
+  awk -F[:\\t&amp;quot; &amp;quot;] &#39;/Current/ {
+    portal=$5
+  };
+  /Attached/ {
+    bdev=$7;
+    if (length(bdev) != 0) print portal &amp;quot;: &amp;quot; bdev
+  }&#39; |
+  sort -t . -k 3,3n -k 4,4n
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Two awk invocations and two sort invocations, so like I said, it&amp;rsquo;s a hack. Anyway, it gives me:&lt;/p&gt;
+&lt;p&gt;Which gives me:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;192.168.11.5: sdg
 192.168.11.5: sdh
