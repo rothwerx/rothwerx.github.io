@@ -1,0 +1,106 @@
+  <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> LED matrix characters &middot; ordered.io </title>
+    
+    <link rel="stylesheet" type="text/css" href="http://ordered.io/css/uno.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://ordered.io/css/lightGallery.css" />
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <link href="" rel="alternate" type="application/rss+xml" title="ordered.io" />
+    
+    <script src="http://ordered.io/js/jquery.min.js"></script>
+    <script src="http://ordered.io/js/main.min.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="http://ordered.io/css/solarized_dark.css" />
+    <script src="http://ordered.io/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+  <body>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-bars btn-mobile-menu__icon"></i>
+        <i class="fa fa-times btn-mobile-close__icon hidden"></i>
+    </span>
+<header class="panel-cover panel-cover--collapsed"  style="background-image: url(/img/1ms.jpg)" >
+    <div class="panel-main">
+        <div class="panel-main__inner panel-inverted">
+            <div class="panel-main__content"> 
+                <h1 class="panel-cover__title panel-title">
+                    <a href="http://ordered.io" title="link to homepage for ordered.io">ordered.io</a>
+                </h1>
+                <hr class="panel-cover__divider" />
+                <p class="panel-cover__description">  Flash storage &amp;&amp; performance engineering  </p>
+                <hr class="panel-cover__divider panel-cover__divider--secondary" />
+                <div class="navigation-wrapper">
+                    <nav class="cover-navigation cover-navigation--primary">
+                        <ul class="navigation">
+                            <li class="navigation__item"><a href="/#blog" title="link to ordered.io blog" class="blog-button">Blog</a> </li>
+                            </br>  </ul>
+                    </nav> <nav class="cover-navigation navigation--social">
+    <ul class="navigation"> 
+        
+        <li class="navigation__item">
+            <a href="http://twitter.com/rothwerx" title="@rothwerx on Twitter"> <i class='fa fa-tt'></i> <span class="label">Twitter</span> </a>
+        </li>   
+        
+        <li class="navigation__item">
+            <a href="https://github.com/rothwerx" title="rothwerx on github"> <i class='fa fa-github'></i> <span class="label">Github</span> </a>
+        </li>  </br>  
+        
+        <li class="navigation__item">
+            <a href="http://no.linkedin.com/in/jeremiahroth/en" title="Linkedin"> <i class='fa fa-ll'></i> <span class="label">Linkedin</span> </a>
+        </li>   </ul>
+</nav>
+ </div>
+            </div>
+        </div>
+        <div class="panel-cover--overlay"></div>
+    </div>
+</header>
+
+    <div class="content-wrapper">
+      <div class="content-wrapper__inner">
+        <div class="post">
+          <h1>LED matrix characters</h1>
+          <span class="post-date">Sun, Jan 4, 2015</span>
+          <p>I&rsquo;ve tinkered with electronics since I was young (I used to have quite the collection of electric and electronic parts, mostly junk, porbably), but for some reason I lost interest until Arduino came on the scene. I bought an Uno and built a couple projects on it, and then Raspberry Pi caught my eye. Here was a whole computer, complete with Linux, in about the same size footprint. So when I got my Pi, I built a few projects with it as well, but then it settled into kind of permanent role of capturing temperatures in my brewing apparatus, and graphing them from a self-contained Graphite database.</p>
+
+<p>But recently I discovered the <a href="https://learn.adafruit.com/introducing-trinket/introduction">Adafruit Trinkets</a> and I&rsquo;ve been getting back into the electronics side again. Trinkets are Arduino-compatible, with 3.3V and 5V logic levels, and they&rsquo;re not much bigger than a postage stamp. Anyway, I&rsquo;ve been playing with the trinkets a lot lately, and just set up one of the <a href="https://www.adafruit.com/products/1633">8x8 LED displays</a>. Of course I wanted to display &ldquo;Hello World!&rdquo; on it, so I looked around for a pre-built alphabet.</p>
+
+<p>I found this little <a href="http://www.diyode.com/mini8x8/">web-based tool</a> which is quite cool, but I didn&rsquo;t like the characters it produced. If I&rsquo;ve got 64 bits to play with, I&rsquo;d like my letters to be a little bit bolder than simple lines. So I set about creating my own letters by simply drawing an 8x8 grid and filling in the appropriate pixels to create bigger letters. I created about half a dozen, enough to display some text, but they weren&rsquo;t great and it was a time-consuming task.</p>
+
+<p>Then by chance, as I was reading a section of <a href="http://www.amazon.com/Code-Developer-Practices-Charles-Petzold-ebook/dp/B00JDMPOK2/">&ldquo;Code&rdquo;</a> about output to video adapters (Code so far has just been a fascinating look at the evolution of the modern day (as of 1999) computer). 8x8 happened to be the number of pixels they used per character for a standard text display, and he had a grid of character grids as an image in the book. So with that information, all I had to do was convert it to the proper binary for Arduino, and I had much better characters to work with.</p>
+
+<p>It was still time-consuming and tedious, but vim macros help a lot.</p>
+
+<pre><code>B00110000,B01111000,B11001100,B11001100,B11111100,B11001100,B11001100,B00000000,25, // A
+B11111100,B01100110,B01100110,B01111100,B01100110,B01100110,B11111100,B00000000,25, // B
+B00111100,B01100110,B11000000,B11000000,B11000000,B01100110,B00111100,B00000000,25, // C
+B11111000,B01101100,B01100110,B01100110,B01100110,B01101100,B11111000,B00000000,25, // D
+
+B00000000,B00000000,B01111000,B00001100,B01111100,B11001100,B01110110,B00000000,25, // a
+B11100000,B01100000,B01100000,B01111100,B01100110,B01100110,B11011100,B00000000,25, // b
+B00000000,B00000000,B01111000,B11001100,B11000000,B11001100,B01111000,B00000000,25, // c
+B00011100,B00001100,B00001100,B01111100,B11001100,B11001100,B01110110,B00000000,25, // d
+</code></pre>
+
+<p>Anyway, I hope it&rsquo;ll be useful to someone else. The Gist is <a href="https://gist.github.com/rothwerx/700f275d078b3483509f">here</a>.</p>
+
+<p><img src="/img/8x8.gif" alt="Characters" />
+</p>
+
+        </div>
+        
+
+      </div>
+    </div>
+  </body>
+  
+</html>

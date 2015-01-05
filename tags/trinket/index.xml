@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Trinket on ordered.io </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://ordered.io/tags/trinket/index.xml/</link>
+    <language>en-us</language>
+    
+    
+    <updated>Sun, 04 Jan 2015 16:41:23 MST</updated>
+    
+    <item>
+      <title>LED matrix characters</title>
+      <link>http://ordered.io/post/led_matrix_characters/</link>
+      <pubDate>Sun, 04 Jan 2015 16:41:23 MST</pubDate>
+      
+      <guid>http://ordered.io/post/led_matrix_characters/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve tinkered with electronics since I was young (I used to have quite the collection of electric and electronic parts, mostly junk, porbably), but for some reason I lost interest until Arduino came on the scene. I bought an Uno and built a couple projects on it, and then Raspberry Pi caught my eye. Here was a whole computer, complete with Linux, in about the same size footprint. So when I got my Pi, I built a few projects with it as well, but then it settled into kind of permanent role of capturing temperatures in my brewing apparatus, and graphing them from a self-contained Graphite database.&lt;/p&gt;
+
+&lt;p&gt;But recently I discovered the &lt;a href=&#34;https://learn.adafruit.com/introducing-trinket/introduction&#34;&gt;Adafruit Trinkets&lt;/a&gt; and I&amp;rsquo;ve been getting back into the electronics side again. Trinkets are Arduino-compatible, with 3.3V and 5V logic levels, and they&amp;rsquo;re not much bigger than a postage stamp. Anyway, I&amp;rsquo;ve been playing with the trinkets a lot lately, and just set up one of the &lt;a href=&#34;https://www.adafruit.com/products/1633&#34;&gt;8x8 LED displays&lt;/a&gt;. Of course I wanted to display &amp;ldquo;Hello World!&amp;rdquo; on it, so I looked around for a pre-built alphabet.&lt;/p&gt;
+
+&lt;p&gt;I found this little &lt;a href=&#34;http://www.diyode.com/mini8x8/&#34;&gt;web-based tool&lt;/a&gt; which is quite cool, but I didn&amp;rsquo;t like the characters it produced. If I&amp;rsquo;ve got 64 bits to play with, I&amp;rsquo;d like my letters to be a little bit bolder than simple lines. So I set about creating my own letters by simply drawing an 8x8 grid and filling in the appropriate pixels to create bigger letters. I created about half a dozen, enough to display some text, but they weren&amp;rsquo;t great and it was a time-consuming task.&lt;/p&gt;
+
+&lt;p&gt;Then by chance, as I was reading a section of &lt;a href=&#34;http://www.amazon.com/Code-Developer-Practices-Charles-Petzold-ebook/dp/B00JDMPOK2/&#34;&gt;&amp;ldquo;Code&amp;rdquo;&lt;/a&gt; about output to video adapters (Code so far has just been a fascinating look at the evolution of the modern day (as of 1999) computer). 8x8 happened to be the number of pixels they used per character for a standard text display, and he had a grid of character grids as an image in the book. So with that information, all I had to do was convert it to the proper binary for Arduino, and I had much better characters to work with.&lt;/p&gt;
+
+&lt;p&gt;It was still time-consuming and tedious, but vim macros help a lot.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;B00110000,B01111000,B11001100,B11001100,B11111100,B11001100,B11001100,B00000000,25, // A
+B11111100,B01100110,B01100110,B01111100,B01100110,B01100110,B11111100,B00000000,25, // B
+B00111100,B01100110,B11000000,B11000000,B11000000,B01100110,B00111100,B00000000,25, // C
+B11111000,B01101100,B01100110,B01100110,B01100110,B01101100,B11111000,B00000000,25, // D
+
+B00000000,B00000000,B01111000,B00001100,B01111100,B11001100,B01110110,B00000000,25, // a
+B11100000,B01100000,B01100000,B01111100,B01100110,B01100110,B11011100,B00000000,25, // b
+B00000000,B00000000,B01111000,B11001100,B11000000,B11001100,B01111000,B00000000,25, // c
+B00011100,B00001100,B00001100,B01111100,B11001100,B11001100,B01110110,B00000000,25, // d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Anyway, I hope it&amp;rsquo;ll be useful to someone else. The Gist is &lt;a href=&#34;https://gist.github.com/rothwerx/700f275d078b3483509f&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;/img/8x8.gif&#34; alt=&#34;Characters&#34; /&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
